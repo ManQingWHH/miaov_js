@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div{
+            width:100px;
+            height:200px;
+            background:#e4393c;
+            position:absolute;
+            left:-100px;
+            top:100px;
+        }
+        #div span {
+            width:30px;
+            height:70px;
+            background:yellow;
+            position:absolute;
+            left:100px;
+            top:75px;
+            text-align: center;
+            line-height: 23px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "div">
+        <span>分享到</span>
+    </div>
+</body>
+<script src = "../jq.js"></script>
+<script>
+    $(()=>{
+        var div = $("#div");
+        var iSpeed = 10;
+        div.mouseover(function(){
+            startMove(0);
+        }).mouseout(function(){
+            startMove(-100);
+        });
+    });
+    var timer = null;
+    function startMove(iTarget){
+        var div = $("#div");
+        if(timer){
+            clearInterval(timer);
+        }
+        if(div.position().left < iTarget){
+            iSpeed = 10;
+        }else{
+            iSpeed = -10;
+        }
+        timer = setInterval(function(){
+            if(div.position().left === iTarget){
+                clearInterval(timer);
+            }else{
+                div.css("left",div.position().left+iSpeed+"px");
+            }
+        },30);
+    }
+</script>
+</html>

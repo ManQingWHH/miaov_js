@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src = "jquery-3.2.1.js"></script>
+    <style>
+        #div{
+            width:200px;
+            height:200px;
+            background:red;
+            margin:10px;
+            display:none;
+        }
+
+    </style>
+</head>
+<body>
+    <button id = "btn">移过来</button>
+    <div id = "div"></div>
+    <script>
+        var timer = null
+        var btn = $("#btn");
+        var div = $("#div");
+        function show(){
+            clearTimeout(timer);
+            div.css("display","block");
+        }
+        function hide(){
+            timer = setTimeout(function(){
+                div.css("display","none");
+            },300);
+        }
+        btn.mouseover(function(){show();}).mouseout(function(){hide();});
+        div.mouseover(function(){show();}).mouseout(function(){hide();});
+
+    </script>
+</body>
+</html>

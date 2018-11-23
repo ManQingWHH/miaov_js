@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src = "jquery-3.2.1.js"></script>
+ </head>
+ <body>
+	<b>全选:</b>
+	<p>
+		1:<input type="checkbox">
+		2:<input type="checkbox">
+		3:<input type="checkbox">
+		4:<input type="checkbox">
+		5:<input type="checkbox">
+		6:<input type="checkbox">
+		7:<input type="checkbox">
+		8:<input type="checkbox">
+	</p>
+ </body>
+ <script>
+ 	var pInput = $("p input");
+	console.log(pInput);
+	$("b").click(function(){
+		$.each(pInput,function(i,item){	
+			if($(item).prop("checked")==="false"){
+				$(item).prop("checked","false");
+				console.log(1);
+			}else{
+				console.log(2);
+				$(item).prop("checked","true");
+			}
+		});
+	});
+ </script>
+</html>

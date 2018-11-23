@@ -1,0 +1,41 @@
+<!DOCTYPE">
+<html>
+	<head>
+		<title> New Document </title>
+		<style>
+			#div{
+				width:200px;
+				height:200px;
+				background-color:red;
+				position:absolute;
+				left:0px;
+				top:50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input id = "btn" type="button" value = "开始运动">
+		<div id = "div"></div>
+	</body>
+
+	<script src = "jq.js"></script>
+	<script>
+		var div = $("#div");
+		var timer = null;
+		var speed = 10;
+		$("#btn").click(function(){
+			//过度点击按钮时,会同时有若干个定时器一起工作,div运动的速度会发生改变
+			//每次点击后,之前若有定时器,必须先关闭
+			clearInterval(timer);
+			timer = setInterval(function(){
+				if(div.position().left >= 700){
+					clearInterval(timer);
+				}else{
+					div.css("left",div.position().left+speed+"px");
+				}
+			},30);
+			//不用三等判断,防止设置某些speed值而使div的left值跳过300
+		});
+	</script>
+</html>

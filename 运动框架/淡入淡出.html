@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       img{
+           /* 兼容IE */
+           filter:alpha("opacity:30%");
+           /* 兼容谷歌 */
+           opacity: 0.3;
+       }
+    </style>
+</head>
+<body>
+   <img id = "img" src="girl.png" alt="">
+</body>
+<script src = "../jq.js"></script>
+<script>
+    $(function(){
+        var img = $("#img");
+        img.mouseover(function(){
+            startMove(100);
+        }).mouseout(function(){
+            startMove(30);
+        });
+    });
+    var timer = null;
+    var alpha = 30;
+    function startMove(iTarget){
+      var img = $("#img");
+      var iSpeed = 0;
+      clearInterval(timer);
+      timer = setInterval(function(){
+          if(alpha < iTarget){
+              iSpeed = 10;
+          }else{
+              iSpeed = -10;
+          }
+          if(alpha === iTarget){
+              clearInterval(timer);
+          }else{
+              //img.css("filter",alpha(alpha));
+              alpha += iSpeed;
+              img.css("opacity",alpha/100);
+          }
+      },300);
+  }  
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src = "jquery-3.2.1.js"></script>
+  <style>
+	.active{background:yellow}
+	.div>div{
+		width:100px;
+		height:100px;
+		background:#f0f;
+		display:none;
+	}
+  </style>
+ </head>
+ <body>
+	<div class="btn">
+		<button class = "active">1</button>
+		<button>2</button>
+		<button>3</button>
+	</div>
+	<div class = "div">
+		<div style ="display:block;">111</div>
+		<div>222</div>
+		<div>333</div>
+	</div>
+	<script>
+		var btns=$("div.btn button");
+		var divs =$("div.div div");
+		for(var i=0;i<btns.length;i++){
+			$(btns[i]).attr("index",i);//给每个按钮添加一个新属性 --index--
+			$(btns[i]).click(function(){
+				for(var j=0;j<btns.length;j++){
+					$(btns[j]).removeClass("active");
+					$(divs[j]).css("display","none");
+				}
+				$(this).addClass("active");
+				$(divs[$(this).attr("index")]).css("display","block");
+			});
+		}
+		});
+	</script>
+ </body>
+</html>
